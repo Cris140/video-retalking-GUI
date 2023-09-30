@@ -8,6 +8,15 @@ import random
 # Global variable to store the previous video file name
 previous_video_file_name = None
 
+if os.path.isdir('checkpoints') == False:
+    os.system("gdown --id 1gFCEoFgDQ8KL3yGOtAldXhuODtAvrl6G -O add.7z")
+    os.system("pip install py7zr")
+    os.system("py7zr x add.7z")
+    shutil.move('./add ons/GFPGAN-engine', '../GFPGAN-engine')
+    shutil.move('./add ons/checkpoints', './checkpoints')
+else:
+    print("Tudo já instalado, abrindo gradio...")
+
 def generate_random_string(length=4):
     """Generate a random string of fixed length."""
     letters = string.ascii_lowercase
